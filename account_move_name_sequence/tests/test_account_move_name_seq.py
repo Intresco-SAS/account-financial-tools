@@ -18,6 +18,8 @@ from odoo.tests.common import TransactionCase
 class TestAccountMoveNameSequence(TransactionCase):
     def setUp(self):
         super().setUp()
+        # Force English language to match error messages in tests
+        self.env = self.env(context=dict(self.env.context, lang='en_US'))
         self.company = self.env.ref("base.main_company")
         self.misc_journal = self.env["account.journal"].create(
             {

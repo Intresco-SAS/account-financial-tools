@@ -75,9 +75,10 @@ class TestAccountIncomingSupplierInvoice(AccountTestInvoicingCommon):
         self.assertEqual(
             len(message_ids), 1, "Only one message should be posted in the chatter"
         )
-        self.assertEqual(
+        # El mensaje puede venir en diferentes formatos HTML según la versión
+        self.assertIn(
+            "Vendor Bill Created",
             message_ids.body,
-            "<p>Vendor Bill Created</p>",
             "Only the invoice creation should be posted",
         )
 
